@@ -41,11 +41,12 @@ class InventoryForm extends Component {
         <div className="form-group">
           <label htmlFor="price">Price:</label>
           <input
-              name="price"
-              type="number"
-              step="0.01"
-              className="form-control"
-              placeholder="Enter Price..." required />
+            name="price"
+            type="number"
+            className="form-control"
+            placeholder="Enter Price..."
+            step="0.01"
+          required />
         </div>
 
         <div className="form-group">

@@ -17,7 +17,6 @@ class Inventory extends Component {
 
     let name = e.target.elements.name.value;
     let price = e.target.elements.price.value;
-    let desc = e.target.elements.desc.value;
 
     let URL = 'http://localhost:5000/api/retrieve';
     // let URL = 'http://localhost:80/api/retrieve';
@@ -27,8 +26,7 @@ class Inventory extends Component {
       headers: {
         'Content-Type': 'application/json',
         'name': name,
-        'price': price,
-        'desc': desc
+        'price': price
       }
     });
 
@@ -37,7 +35,7 @@ class Inventory extends Component {
     this.setState({ 'items': data });
   }
 
-  deleteEvent = async(id) => {
+  deleteItem = async(id) => {
     if (!window.confirm('Are you sure you want to delete this item?')) {
       return;
     }
@@ -81,11 +79,11 @@ class Inventory extends Component {
         <h1>Add Item to Inventory</h1>
           <InventoryForm getItems={this.getItems}  />
           </div>
-          <div className="col-md-10 offset-md-1">
-            <h1>Display an Event</h1>
-            <DisplayForm getEvents={this.getEvents} />
+          <div className="col-md-6 offset-md-2">
+            <h1>Display Items</h1>
+            <DisplayForm getItems={this.getItems} />
           </div>
-          <div className="col-md-10 offset-md-1">
+          <div id="productTable" className="col-md-8 offset-md-1">
             <ProductTable deleteItem={this.deleteItem} items={this.state.items} />
         </div> {/* ends col md 8 */}
       </div> //ends row
